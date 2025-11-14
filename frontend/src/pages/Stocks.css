@@ -1,0 +1,201 @@
+.stocks-page {
+  animation: fadeIn 0.3s ease-in;
+}
+
+.stocks-controls {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.search-box {
+  display: flex;
+  gap: 0.5rem;
+  flex: 1;
+  min-width: 250px;
+}
+
+.search-box input {
+  flex: 1;
+  padding: 0.75rem 1rem;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  color: var(--text-primary);
+  font-size: 1rem;
+}
+
+.search-box input:focus {
+  outline: none;
+  border-color: var(--primary);
+}
+
+.search-box button {
+  padding: 0.75rem 1.5rem;
+  background: var(--primary);
+  border: none;
+  border-radius: 8px;
+  color: white;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.search-box button:hover {
+  background: var(--primary-dark);
+}
+
+.interval-selector {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.interval-selector button {
+  padding: 0.75rem 1rem;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.interval-selector button:hover {
+  background: var(--bg-tertiary);
+  color: var(--text-primary);
+}
+
+.interval-selector button.active {
+  background: var(--primary);
+  color: white;
+  border-color: var(--primary);
+}
+
+.popular-stocks {
+  margin-bottom: 2rem;
+}
+
+.popular-stocks h3 {
+  font-size: 1rem;
+  color: var(--text-secondary);
+  margin-bottom: 1rem;
+}
+
+.stock-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.stock-badge {
+  padding: 0.5rem 1rem;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: all 0.2s;
+  font-weight: 600;
+}
+
+.stock-badge:hover {
+  background: var(--bg-tertiary);
+  color: var(--text-primary);
+}
+
+.stock-badge.active {
+  background: var(--primary);
+  color: white;
+  border-color: var(--primary);
+}
+
+.stock-content {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 1.5rem;
+}
+
+.stock-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid var(--border);
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.stock-header-left {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.stock-icon {
+  width: 60px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--primary);
+  color: white;
+  font-weight: bold;
+  font-size: 1.2rem;
+  border-radius: 12px;
+}
+
+.stock-header h2 {
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.stock-header-price {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.stock-stats {
+  display: flex;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+
+.stat {
+  text-align: right;
+}
+
+.stat-label {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  margin-bottom: 0.25rem;
+}
+
+.stat-value {
+  font-size: 1.1rem;
+  font-weight: bold;
+  color: var(--text-primary);
+}
+
+.chart-container {
+  width: 100%;
+  height: 400px;
+}
+
+@media (max-width: 768px) {
+  .stock-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .stock-stats {
+    width: 100%;
+    justify-content: space-between;
+  }
+}
+

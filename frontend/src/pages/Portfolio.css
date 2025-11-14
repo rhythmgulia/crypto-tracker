@@ -1,0 +1,408 @@
+.portfolio-page {
+  animation: fadeIn 0.3s ease-in;
+}
+
+.portfolio-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.btn-primary {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  background: var(--primary);
+  border: none;
+  border-radius: 8px;
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.btn-primary:hover {
+  background: var(--primary-dark);
+}
+
+.btn-secondary {
+  padding: 0.75rem 1.5rem;
+  background: var(--bg-tertiary);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  color: var(--text-primary);
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.btn-secondary:hover {
+  background: var(--bg-secondary);
+}
+
+.portfolio-content {
+  display: grid;
+  grid-template-columns: 300px 1fr;
+  gap: 2rem;
+}
+
+.portfolio-sidebar {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 1.5rem;
+  height: fit-content;
+}
+
+.portfolio-sidebar h2 {
+  font-size: 1.25rem;
+  margin-bottom: 1rem;
+}
+
+.portfolio-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.portfolio-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  background: var(--bg-tertiary);
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.portfolio-item:hover {
+  background: var(--bg-primary);
+}
+
+.portfolio-item.active {
+  background: var(--primary);
+  border: 1px solid var(--primary-dark);
+}
+
+.portfolio-item-name {
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 0.25rem;
+}
+
+.portfolio-item.active .portfolio-item-name {
+  color: white;
+}
+
+.portfolio-item-count {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+}
+
+.portfolio-item.active .portfolio-item-count {
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.delete-btn {
+  padding: 0.25rem;
+  background: transparent;
+  border: none;
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: color 0.2s;
+}
+
+.delete-btn:hover {
+  color: var(--danger);
+}
+
+.portfolio-item.active .delete-btn {
+  color: white;
+}
+
+.empty-portfolio {
+  text-align: center;
+  padding: 2rem;
+  color: var(--text-secondary);
+}
+
+.portfolio-main {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 1.5rem;
+}
+
+.portfolio-summary {
+  margin-bottom: 2rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.portfolio-summary h2 {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.portfolio-value {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.value-main {
+  flex: 1;
+}
+
+.value-label {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  margin-bottom: 0.5rem;
+}
+
+.value-amount {
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: var(--text-primary);
+}
+
+.value-change {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 1rem;
+  border-radius: 8px;
+  background: var(--bg-tertiary);
+}
+
+.value-change.positive {
+  color: var(--success);
+}
+
+.value-change.negative {
+  color: var(--danger);
+}
+
+.change-amount {
+  font-size: 1.25rem;
+  font-weight: bold;
+}
+
+.change-percent {
+  font-size: 0.9rem;
+  opacity: 0.8;
+}
+
+.add-holding {
+  margin-bottom: 2rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.add-holding h3 {
+  font-size: 1.1rem;
+  margin-bottom: 1rem;
+}
+
+.holding-form {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.holding-form select,
+.holding-form input {
+  padding: 0.75rem;
+  background: var(--bg-tertiary);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  color: var(--text-primary);
+  font-size: 1rem;
+}
+
+.holding-form select:focus,
+.holding-form input:focus {
+  outline: none;
+  border-color: var(--primary);
+}
+
+.holding-hint {
+  margin-top: 0.75rem;
+  padding: 0.5rem;
+  background: var(--bg-tertiary);
+  border-radius: 6px;
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+}
+
+.holding-hint p {
+  margin: 0;
+}
+
+.holdings-list h3 {
+  font-size: 1.1rem;
+  margin-bottom: 1rem;
+}
+
+.holdings-table {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.table-header {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr 1fr 1fr 1.5fr 1.5fr 0.5fr;
+  gap: 1rem;
+  padding: 1rem;
+  background: var(--bg-tertiary);
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+}
+
+.table-row {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr 1fr 1fr 1.5fr 1.5fr 0.5fr;
+  gap: 1rem;
+  padding: 1rem;
+  background: var(--bg-tertiary);
+  border-radius: 8px;
+  align-items: center;
+  transition: transform 0.2s;
+}
+
+.table-row:hover {
+  transform: translateX(4px);
+}
+
+.asset-cell {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.asset-type {
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+}
+
+.asset-symbol {
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.gain-loss {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  font-weight: 600;
+}
+
+.gain-loss.positive {
+  color: var(--success);
+}
+
+.gain-loss.negative {
+  color: var(--danger);
+}
+
+.percent {
+  font-size: 0.85rem;
+  opacity: 0.8;
+}
+
+.remove-btn {
+  padding: 0.5rem;
+  background: transparent;
+  border: none;
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: color 0.2s;
+}
+
+.remove-btn:hover {
+  color: var(--danger);
+}
+
+.empty-holdings,
+.empty-portfolio-main {
+  text-align: center;
+  padding: 3rem;
+  color: var(--text-secondary);
+}
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 2rem;
+  width: 90%;
+  max-width: 400px;
+}
+
+.modal-content h2 {
+  margin-bottom: 1.5rem;
+}
+
+.modal-content input {
+  width: 100%;
+  padding: 0.75rem;
+  background: var(--bg-tertiary);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  color: var(--text-primary);
+  font-size: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.modal-content input:focus {
+  outline: none;
+  border-color: var(--primary);
+}
+
+.modal-actions {
+  display: flex;
+  gap: 1rem;
+  justify-content: flex-end;
+}
+
+@media (max-width: 1024px) {
+  .portfolio-content {
+    grid-template-columns: 1fr;
+  }
+
+  .table-header,
+  .table-row {
+    grid-template-columns: 1fr;
+    gap: 0.5rem;
+  }
+
+  .table-header > div,
+  .table-row > div {
+    padding: 0.25rem 0;
+  }
+}
+
