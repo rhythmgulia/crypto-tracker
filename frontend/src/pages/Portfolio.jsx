@@ -12,10 +12,17 @@ const Portfolio = () => {
   const [newPortfolioName, setNewPortfolioName] = useState('');
   const [newHolding, setNewHolding] = useState({ type: 'crypto', symbol: '', quantity: '' });
 
-  const userId = 'user_' + (localStorage.getItem('userId') || Date.now());
-  if (!localStorage.getItem('userId')) {
-    localStorage.setItem('userId', userId);
-  }
+  // Get or create userId
+  const getUserId = () => {
+    let storedUserId = localStorage.getItem('userId');
+    if (!storedUserId) {
+      storedUserId = 'user_' + Date.now();
+      localStorage.setItem('userId', storedUserId);
+    }
+    return storedUserId;
+  };
+  
+  const userId = getUserId();
 
   useEffect(() => {
     fetchPortfolios();
@@ -149,12 +156,22 @@ const Portfolio = () => {
       setShowModal(false);
     } catch (error) {
       console.error('Error creating portfolio:', error);
+      console.error('Error response:', error.response);
       
       // Use enhanced error message from interceptor if available
-      const errorMessage = error.userMessage || 
-        (error.code === 'ECONNREFUSED' || error.message?.includes('Network Error') || !error.response
-          ? 'Cannot connect to the server. Please make sure the backend server is running on port 5001.\n\nTo start the backend:\n1. Open a terminal\n2. cd backend\n3. npm start'
-          : error.response?.data?.error || error.message || 'Unknown error');
+      let errorMessage = error.userMessage;
+      
+      if (!errorMessage) {
+        if (error.code === 'ECONNREFUSED' || error.message?.includes('Network Error') || !error.response) {
+          errorMessage = 'Cannot connect to the server. Please make sure the backend server is running on port 5001.\n\nTo start the backend:\n1. Open a terminal\n2. cd backend\n3. npm start';
+        } else if (error.response?.data?.error) {
+          errorMessage = error.response.data.error;
+        } else if (error.response?.status) {
+          errorMessage = `Server error (${error.response.status}): ${error.response.statusText || 'Unknown error'}`;
+        } else {
+          errorMessage = error.message || 'Unknown error';
+        }
+      }
       
       alert(`Failed to create portfolio:\n\n${errorMessage}`);
     } finally {
