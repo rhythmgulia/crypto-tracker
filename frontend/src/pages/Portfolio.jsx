@@ -131,8 +131,12 @@ const Portfolio = () => {
   };
 
   const createPortfolio = async () => {
-    if (!newPortfolioName.trim()) return;
+    if (!newPortfolioName.trim()) {
+      alert('Please enter a portfolio name');
+      return;
+    }
 
+    setLoading(true);
     try {
       const response = await portfolioAPI.create({
         userId,
@@ -145,7 +149,16 @@ const Portfolio = () => {
       setShowModal(false);
     } catch (error) {
       console.error('Error creating portfolio:', error);
-      alert('Failed to create portfolio');
+      
+      // Use enhanced error message from interceptor if available
+      const errorMessage = error.userMessage || 
+        (error.code === 'ECONNREFUSED' || error.message?.includes('Network Error') || !error.response
+          ? 'Cannot connect to the server. Please make sure the backend server is running on port 5001.\n\nTo start the backend:\n1. Open a terminal\n2. cd backend\n3. npm start'
+          : error.response?.data?.error || error.message || 'Unknown error');
+      
+      alert(`Failed to create portfolio:\n\n${errorMessage}`);
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -452,15 +465,28 @@ const Portfolio = () => {
               placeholder="Portfolio name"
               value={newPortfolioName}
               onChange={(e) => setNewPortfolioName(e.target.value)}
-              onKeyPress={(e) => e.key === 'Enter' && createPortfolio()}
+              onKeyPress={(e) => {
+                if (e.key === 'Enter' && !loading && newPortfolioName.trim()) {
+                  createPortfolio();
+                }
+              }}
+              disabled={loading}
               autoFocus
             />
             <div className="modal-actions">
-              <button className="btn-secondary" onClick={() => setShowModal(false)}>
+              <button 
+                className="btn-secondary" 
+                onClick={() => setShowModal(false)}
+                disabled={loading}
+              >
                 Cancel
               </button>
-              <button className="btn-primary" onClick={createPortfolio}>
-                Create
+              <button 
+                className="btn-primary" 
+                onClick={createPortfolio}
+                disabled={loading || !newPortfolioName.trim()}
+              >
+                {loading ? 'Creating...' : 'Create'}
               </button>
             </div>
           </div>
