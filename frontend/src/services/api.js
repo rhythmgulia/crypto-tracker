@@ -11,6 +11,17 @@ const api = axios.create({
   timeout: 10000, // 10 second timeout
 });
 
+api.interceptors.request.use(
+  (config) => {
+    console.log(`API Request: ${config.method?.toUpperCase()} ${config.url}`);
+    return config;
+  },
+  (error) => {
+    console.error('API Request Error:', error);
+    return Promise.reject(error);
+  }
+);
+
 // Add request interceptor for debugging
 api.interceptors.request.use(
   (config) => {
